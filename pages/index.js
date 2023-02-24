@@ -1,11 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { useUser } from '@auth0/nextjs-auth0/client';
 import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const { user } = useUser();
+
   return (
     <>
       <Head>
@@ -16,8 +19,12 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <a href="/api/auth/login">Login</a>
-          <a href="/api/auth/logout">Logout</a>
+          {user ? (
+              <a href="/api/auth/logout">Logout {user.name}</a>
+            ) : (
+              <a href="/api/auth/login">Login</a>
+            )
+          }
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.js</code>
