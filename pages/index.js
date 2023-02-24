@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import LoginBtn from '@/components/login-btn'
 import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,7 +16,8 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <LoginBtn />
+          <a href="/api/auth/login">Login</a>
+          <a href="/api/auth/logout">Logout</a>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.js</code>
